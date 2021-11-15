@@ -13,12 +13,11 @@ export function setJsonDeserializationFilePath(folder: string) {
     deserializationFilePath = folder
 }
 
-export default function jObjectToJson(objectReferenceId: number): any {
+export default function jObjectToJson(objectReferenceId: number): string {
     const tempFileName = `${deserializationFilePath}/temp_${deserializationFileNextIndex}.json`
     deserializationFileNextIndex++
     if (deserializationFileNextIndex > deserializationFileMaxCount) 1
     deserializationFileMaxCount = 0
     JValue.writeToFile(objectReferenceId, tempFileName)
-    const jsonString = MiscUtil.ReadFromFile(tempFileName)
-    return JSON.parse(jsonString)
+    return MiscUtil.ReadFromFile(tempFileName)
 }

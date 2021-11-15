@@ -5,9 +5,7 @@ string function ToJson(int jcontainersObjectReference, string tempFile = "", int
         return ""
     endIf
 
-    Debug.MessageBox("Can haz lock?")
     __lock()
-    Debug.MessageBox("Got da lock")
     if ! tempFile
         int nextTempFileIndex = JDB.solveInt(".jObjectToJson.nextTempFileIndex")
         if nextTempFileIndex
@@ -17,7 +15,6 @@ string function ToJson(int jcontainersObjectReference, string tempFile = "", int
             JDB.solveIntSetter(".jObjectToJson.nextTempFileIndex", nextTempFileIndex, createMissingKeys = true)
         endIf
         tempFile = tempFileFolder + "/" + tempFilePrefix + nextTempFileIndex + tempFileSuffix
-        Debug.MessageBox("Temp file: " + tempFile)
     endIf
     JValue.writeToFile(jcontainersObjectReference, tempFile)
     string json = MiscUtil.ReadFromFile(tempFile)

@@ -2,7 +2,6 @@ scriptName JObjectToJson
 
 string function ToJson(int jcontainersObjectReference, string tempFile = "", int tempFileMax = 100, string tempFileFolder = "Data/JObjectToJson/Temp0", string tempFilePrefix = "temp_", string tempFileSuffix = ".json") global
     if ! jcontainersObjectReference
-        Debug.MessageBox("Didn't provide an object to serialize")
         return ""
     endIf
 
